@@ -76,11 +76,17 @@ class AuthController
         $username = trim($_POST['username'] ?? '');
         $password = $_POST['password'] ?? '';
         $passwordConfirmation = $_POST['password_confirmation'] ?? '';
+        $email = trim($_POST['email'] ?? '');
 
-        store_old_input(['username' => $username]);
+        store_old_input(['username' => $username, 'email' => $email]);
 
-        if ($username === '' || $password === '' || $passwordConfirmation === '') {
+        if ($username === '' || $password === '' || $passwordConfirmation === '' || $email === '') {
             set_flash('error', 'Semua field registrasi wajib diisi.');
+            redirect('register');
+        }
+
+        if (strpos($email, '@') === false) {
+            set_flash('error', 'Isian email tidak valid.');
             redirect('register');
         }
 
@@ -104,7 +110,7 @@ class AuthController
             redirect('register');
         }
 
-        $this->userModel->create($username, password_hash($password, PASSWORD_DEFAULT));
+        $this->userModel->create($username, password_hash($password, PASSWORD_DEFAULT), $email);
         clear_old_input();
         set_flash('success', 'Registrasi berhasil. Silakan masuk.');
         redirect('login');

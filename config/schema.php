@@ -18,6 +18,7 @@ class Schema
         ");
 
         self::ensureColumn($connection, 'users', 'role', "ALTER TABLE users ADD COLUMN role ENUM('admin', 'user') NOT NULL DEFAULT 'user' AFTER password");
+        self::ensureColumn($connection, 'users', 'email', "ALTER TABLE users ADD COLUMN email VARCHAR(150) DEFAULT NULL AFTER role");
 
         self::ensureColumn($connection, 'buku', 'dipinjam_oleh', "ALTER TABLE buku ADD COLUMN dipinjam_oleh VARCHAR(50) DEFAULT NULL AFTER thumbpath");
         self::ensureColumn($connection, 'buku', 'dipinjam_pada', "ALTER TABLE buku ADD COLUMN dipinjam_pada DATETIME DEFAULT NULL AFTER dipinjam_oleh");

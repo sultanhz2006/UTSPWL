@@ -45,11 +45,42 @@
                     required
                 >
             </div>
+            <div>
+                <label for="email" class="form-label">Email</label>
+                <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    id="email"
+                    name="email"
+                    value="<?= e(old('email')) ?>"
+                    placeholder="Masukkan email"
+                    required
+                    oninput="validateEmail(this)"
+                >
+                <div id="email-error" class="text-danger small mt-1" style="display:none;">Isian tidak valid</div>
+            </div>
             <button type="submit" class="btn btn-info btn-lg btn-soft fw-semibold">Registrasi</button>
         </form>
 
         <div class="mt-4 pt-3 border-top border-secondary-subtle text-secondary small text-center">
             Sudah punya akun? <a href="index.php?route=login" class="link-info link-underline-opacity-0 link-underline-opacity-100-hover">Masuk</a>
         </div>
+
+        <div class="mt-3 pt-3 border-top border-secondary-subtle text-center">
+            <span class="text-secondary small">A12.2024.07163 &nbsp;·&nbsp; Muhammad Sultan Hafidz Herawan</span>
+        </div>
     </div>
 </div>
+
+<script>
+function validateEmail(input) {
+    var errorEl = document.getElementById('email-error');
+    if (input.value.indexOf('@') === -1) {
+        errorEl.style.display = 'block';
+        input.classList.add('is-invalid');
+    } else {
+        errorEl.style.display = 'none';
+        input.classList.remove('is-invalid');
+    }
+}
+</script>

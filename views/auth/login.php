@@ -51,5 +51,9 @@
         <div class="mt-4 pt-3 border-top border-secondary-subtle text-secondary small text-center">
             Belum ada akun? <a href="index.php?route=register" class="link-info link-underline-opacity-0 link-underline-opacity-100-hover">Registrasi</a>
         </div>
+
+        <div class="mt-3 pt-3 border-top border-secondary-subtle text-center">
+            <span class="text-secondary small">A12.2024.07163 &nbsp;·&nbsp; Muhammad Sultan Hafidz Herawan</span>
+        </div>
     </div>
 </div>

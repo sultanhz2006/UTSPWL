@@ -3,7 +3,8 @@
         <div class="col-lg-8">
             <span class="badge rounded-pill text-bg-primary px-3 py-2 mb-3"><?= is_admin() ? 'Dashboard Admin' : 'Dashboard Peminjaman' ?></span>
             <h1 class="display-6 fw-bold mb-2">Inventaris Buku Perpustakaan</h1>
-            <p class="text-secondary mb-0"><?= is_admin() ? 'Kelola koleksi buku, pantau stok, dan simpan sampul buku dalam tampilan yang rapi dan responsif.' : 'Lihat ketersediaan buku dan pinjam buku yang masih tersedia.' ?></p>
+            <p class="text-secondary mb-1"><?= is_admin() ? 'Kelola koleksi buku, pantau stok, dan simpan sampul buku dalam tampilan yang rapi dan responsif.' : 'Lihat ketersediaan buku dan pinjam buku yang masih tersedia.' ?></p>
+            <p class="text-secondary small mb-0">A12.2024.07163 &nbsp;&middot;&nbsp; Muhammad Sultan Hafidz Herawan</p>
         </div>
         <?php if (is_admin()): ?>
         <div class="col-lg-4 text-lg-end">

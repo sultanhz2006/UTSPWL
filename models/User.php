@@ -11,7 +11,7 @@ class User
 
     public function findByUsername(string $username): ?array
     {
-        $statement = $this->connection->prepare('SELECT id, username, password, role FROM users WHERE username = ? LIMIT 1');
+        $statement = $this->connection->prepare('SELECT id, username, password, role, email FROM users WHERE username = ? LIMIT 1');
         $statement->bind_param('s', $username);
         $statement->execute();
         $result = $statement->get_result()->fetch_assoc();
@@ -31,11 +31,11 @@ class User
         return (bool) $result;
     }
 
-    public function create(string $username, string $passwordHash): void
+    public function create(string $username, string $passwordHash, string $email = ''): void
     {
         $role = 'user';
-        $statement = $this->connection->prepare('INSERT INTO users (username, password, role) VALUES (?, ?, ?)');
-        $statement->bind_param('sss', $username, $passwordHash, $role);
+        $statement = $this->connection->prepare('INSERT INTO users (username, password, role, email) VALUES (?, ?, ?, ?)');
+        $statement->bind_param('ssss', $username, $passwordHash, $role, $email);
         $statement->execute();
         $statement->close();
     }
