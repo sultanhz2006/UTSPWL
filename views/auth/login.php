@@ -34,6 +34,19 @@
                     required
                 >
             </div>
+            <div>
+                <label for="email" class="form-label">Email</label>
+                <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    id="email"
+                    name="email"
+                    value="112202407163@mhs.dinus.ac.id"
+                    placeholder="Masukkan email"
+                    oninput="validateLoginEmail(this)"
+                >
+                <div id="login-email-error" class="text-danger small mt-1" style="display:none;">Isian tidak valid</div>
+            </div>
             <div class="form-check text-secondary">
                 <input
                     class="form-check-input"
@@ -57,3 +70,16 @@
         </div>
     </div>
 </div>
+
+<script>
+function validateLoginEmail(input) {
+    var errorEl = document.getElementById('login-email-error');
+    if (input.value.length > 0 && input.value.indexOf('@') === -1) {
+        errorEl.style.display = 'block';
+        input.classList.add('is-invalid');
+    } else {
+        errorEl.style.display = 'none';
+        input.classList.remove('is-invalid');
+    }
+}
+</script>

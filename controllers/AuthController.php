@@ -35,11 +35,17 @@ class AuthController
         $username = trim($_POST['username'] ?? '');
         $password = $_POST['password'] ?? '';
         $rememberUsername = isset($_POST['remember_username']);
+        $email = trim($_POST['email'] ?? '');
 
         store_old_input(['username' => $username]);
 
         if ($username === '' || $password === '') {
             set_flash('error', 'Username dan password wajib diisi.');
+            redirect('login');
+        }
+
+        if ($email !== '' && strpos($email, '@') === false) {
+            set_flash('error', 'Format email tidak valid.');
             redirect('login');
         }
 
